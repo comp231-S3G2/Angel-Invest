@@ -1,4 +1,4 @@
-# comp231-S3G2
+# comp231-S3G2 Angel Invest App
 ## Setting up a development environment
 Assuming you are installing on Windows follow the below steps.
 ### Install Ubuntu
