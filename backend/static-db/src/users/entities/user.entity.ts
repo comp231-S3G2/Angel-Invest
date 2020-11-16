@@ -4,7 +4,6 @@ import {
   Column,
   CreateDateColumn,
   BeforeInsert,
-  BaseEntity,
   TableInheritance,
 } from 'typeorm';
 import { IsEmail } from 'class-validator';
@@ -40,6 +39,9 @@ export class User {
 
   @Column()
   accountType: string;
+
+  @Column({ nullable: true })
+  stripeId: string;
 
   @Column()
   salt: string;
