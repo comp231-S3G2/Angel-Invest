@@ -1,0 +1,8 @@
+db-postgres:
+  port: 5432
+  username: 'angelinvestapp'
+  password: 'angelinvest@2020'
+  database: 'angelinvest'
+
+jwt_secret:
+  secret: 'v%re$1%3432F'
