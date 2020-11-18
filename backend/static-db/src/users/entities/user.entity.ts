@@ -37,7 +37,7 @@ export class User {
   @Column({ nullable: false })
   password: string;
 
-  @Column()
+  @Column({ type: 'text' })
   accountType: string;
 
   @Column({ nullable: true })

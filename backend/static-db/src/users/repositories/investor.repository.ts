@@ -29,6 +29,7 @@ export class InvestorRepository extends Repository<InvestorEntity> {
         token,
         salt: account.salt,
         password: account.password,
+        accountType: 'Investor',
       });
     } catch (err) {
       return err;
