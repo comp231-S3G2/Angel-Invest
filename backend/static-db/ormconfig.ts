@@ -14,7 +14,7 @@ const config: ConnectionOptions = {
   entities: [__dirname + '/../**/*.entity.{js,ts}'],
 
   // We are using migrations, synchronize should be set to false in production enviroment.
-  synchronize: true,
+  synchronize: false,
 
   // Run migrations automatically,
   // you can disable this if you prefer running migration manually.
