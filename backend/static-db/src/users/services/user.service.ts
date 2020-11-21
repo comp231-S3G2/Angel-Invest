@@ -1,7 +1,6 @@
 import { Injectable, Logger, HttpException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { InvestorRepository } from '../repositories/investor.repository';
-import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from '../repositories/user.repository';
 import { User } from '../entities/user.entity';
 
@@ -11,7 +10,6 @@ export class UserService {
   constructor(
     @InjectRepository(InvestorRepository)
     private readonly userRepository: UserRepository,
-    private readonly jwtService: JwtService,
   ) {}
 
   async getAccountById(id: string): Promise<User | HttpException> {
