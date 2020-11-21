@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, ScrollView, Image, Button} from 'react-native';
-import Header from '../src/header';
-import Boxes from '../src/boxes';
 
-export default function Home({navigation}){
 
+const Home = ({navigation}) => {
+ 
     const pressHandler = () => {
         //navigation.navigate('Details')
         navigation.push('Details');
@@ -17,11 +16,16 @@ export default function Home({navigation}){
     
     return (
         <View style = {styles.View}>
-            <Button title = 'Details' onPress={pressHandler}/>
-            <Button title = 'Upload a post' onPress={pressHandler2}/>
+            <Button title = 'BUTTON 1' onPress={pressHandler}/>
+            <Button title = 'BUTTON2 ' onPress={pressHandler2}/>
         </View>
     )
+
 }
+export default Home;
+
+
+
 
 
 const styles = StyleSheet.create({

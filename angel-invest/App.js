@@ -2,9 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, TextInput, View, ScrollView, Image, Button,SafeAreaView} from 'react-native';
 import 'react-native-gesture-handler';
-import Navigator from './routes/homeStack';
+import {TopTabs} from './routes/homeStack';
 import Header from './src/header';
 import Boxes from './src/boxes';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
@@ -14,13 +15,16 @@ export default class App extends React.Component {
     return(
     <View style = {styles.container}>
 
-      <Navigator/>
+      <NavigationContainer>
+        <TopTabs/>
+      </NavigationContainer>
+
       <Header/>
 
     </View>
 
     );
-  }
+    }
 }
 
 const styles = StyleSheet.create({

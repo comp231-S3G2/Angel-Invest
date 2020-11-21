@@ -1,9 +1,9 @@
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import React from 'react'
 import Home from '../screens/home';
 import Details from '../screens/details';
 import UploadPost from '../screens/uploadPost';
-
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 const screens = {
     Home: {
@@ -25,11 +25,26 @@ const screens = {
     }
 }
 
-const HomeStack = createStackNavigator(screens, {
-    defaultNavigationOptions:{
-        headerTintColor:'#444',
-        headerStyle: {backgroundColor: '#99CCFF'},
-    }
-});
 
-export default createAppContainer(HomeStack);
+
+const Tab = createMaterialTopTabNavigator();
+
+export const TopTabs = () => (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Home} options={{
+          tabBarIcon: ({focused, color}) => (
+          <Ionicons name="Home" color={color}/> )
+          
+  }}
+
+  tabBarOptions={{
+      showIcon: true
+  }}
+  
+  />
+      <Tab.Screen name="Details" component={Details} />
+    </Tab.Navigator>
+    
+)
+
+
