@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { InvestorRepository } from '../repositories/investor.repository';
 import { JwtService } from '@nestjs/jwt';
 import { CreateInvestorAccountDTO } from '../dtos/investor/create.dto';
+import { User } from '../entities/user.entity';
 
 @Injectable()
 export class InvestorService {
@@ -32,6 +33,19 @@ export class InvestorService {
         token,
       );
 
+      return account;
+    } catch (err) {
+      return new HttpException(err.message, err.code);
+    }
+  }
+
+  /**
+   *
+   * @param UserEntity
+   */
+  async getAccountInfo(id: string): Promise<User | HttpException> {
+    try {
+      const account = await this.investorRepository.findOne(id);
       return account;
     } catch (err) {
       return new HttpException(err.message, err.code);

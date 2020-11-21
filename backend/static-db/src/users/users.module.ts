@@ -10,19 +10,28 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from 'config/auth/jwt.strategy';
 import { UserController } from './controllers/user.controller';
 import { UserService } from './services/user.service';
+import { PostEntity } from './entities/post.entity';
+import { PostRepository } from './repositories/post.repository';
+import { PostController } from './controllers/post.controller';
+import { PostService } from './services/post.service';
 const jwtConstants = config.get('jwt_secret');
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([InvestorEntity, InvestorRepository]),
+    TypeOrmModule.forFeature([
+      InvestorEntity,
+      InvestorRepository,
+      PostEntity,
+      PostRepository,
+    ]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '1d' },
     }),
   ],
-  controllers: [InvestorController, UserController],
-  providers: [JwtStrategy, InvestorService, UserService],
+  controllers: [InvestorController, UserController, PostController],
+  providers: [JwtStrategy, InvestorService, UserService, PostService],
   exports: [JwtStrategy, PassportModule],
 })
 export class UserModule {}
