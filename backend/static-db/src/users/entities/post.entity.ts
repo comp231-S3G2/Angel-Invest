@@ -6,13 +6,13 @@ export class PostEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   moneyGoal: number;
 
   @Column({ nullable: false, type: 'text' })
   description: string;
 
-  @Column({ type: 'timestamp', nullable: false })
+  @Column({ type: 'timestamp', nullable: true })
   dateGoal: Date;
 
   @ManyToOne(type => User, user => user.posts)

@@ -18,8 +18,8 @@ export class PostRepository extends Repository<PostEntity> {
       const { description, moneyGoal, dateGoal } = postDTO;
       post.author = author;
       post.description = description;
-      post.moneyGoal = moneyGoal;
-      post.dateGoal = new Date(dateGoal);
+      post.moneyGoal = moneyGoal ? moneyGoal : null;
+      post.dateGoal = dateGoal ? new Date(dateGoal) : null;
 
       return await this.save(post);
     } catch (err) {
