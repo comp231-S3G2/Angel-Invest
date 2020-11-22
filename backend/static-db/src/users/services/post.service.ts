@@ -31,6 +31,9 @@ export class PostService {
       const post = await this.postRepository.findOne(id, {
         relations: ['author'],
       });
+      if (!post) {
+        return new HttpException(`Post with ID: ${id} does not exist.`, 204);
+      }
       return post;
     } catch (err) {
       return new HttpException(err.message, err.code);
