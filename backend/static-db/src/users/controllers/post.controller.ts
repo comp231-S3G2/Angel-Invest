@@ -21,7 +21,7 @@ export class PostController {
   /**
    * @GET_POST_BY_ID
    */
-  @Post(':id')
+  @Get(':id')
   async getPostById(@Param() id: string, @GetUser() user: User) {
     return this.postService.getPostById(id, user);
   }
