@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, Get, UseGuards, Param } from '@nestjs/common';
 import { CreatePostDTO } from '../dtos/post/create.dto';
 import { GetUser } from '../../shared/user.decorator';
 import { User } from '../entities/user.entity';
@@ -16,5 +16,13 @@ export class PostController {
   @Post('/create')
   async createAccount(@GetUser() user: User, @Body() postData: CreatePostDTO) {
     return this.postService.createPost(postData, user);
+  }
+
+  /**
+   * @GET_POST_BY_ID
+   */
+  @Get(':id')
+  async getPostById(@Param() id: string, @GetUser() user: User) {
+    return this.postService.getPostById(id, user);
   }
 }

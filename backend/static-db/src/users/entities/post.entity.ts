@@ -6,14 +6,14 @@ export class PostEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: true })
-  moneyGoal: number;
+  @Column({ nullable: true, default: 0 })
+  moneyGoal?: number;
 
   @Column({ nullable: false, type: 'text' })
   description: string;
 
-  @Column({ type: 'timestamp', nullable: true })
-  dateGoal: Date;
+  @Column({ type: 'timestamp', nullable: true, default: new Date() })
+  dateGoal?: Date;
 
   @ManyToOne(type => User, user => user.posts)
   author: User;
