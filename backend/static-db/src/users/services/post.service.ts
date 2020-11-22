@@ -31,11 +31,7 @@ export class PostService {
       const post = await this.postRepository.findOne(id, {
         relations: ['author'],
       });
-      if (post.author.email === user.email) {
-        return post;
-      } else {
-        return new HttpException('Unauthorized', 401);
-      }
+      return post;
     } catch (err) {
       return new HttpException(err.message, err.code);
     }
