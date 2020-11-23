@@ -37,7 +37,6 @@ const PostStackScreen = ({navigation}) =>(
 
 export default function App() {
   return (
-    <NavigationContainer>
                 <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeStackScreen} />
@@ -45,7 +44,7 @@ export default function App() {
       </Drawer.Navigator>
     </NavigationContainer>
             
-    </NavigationContainer>
+    
     
   );
 }
