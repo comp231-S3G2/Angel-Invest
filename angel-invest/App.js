@@ -7,6 +7,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View ,Button} from 'react-native';
 
+import HomeScreen from './src/components/HomeScreen';
+import PostScreen from './src/components/PostScreen';
+
 const HomeStack = createStackNavigator();
 const PostStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
