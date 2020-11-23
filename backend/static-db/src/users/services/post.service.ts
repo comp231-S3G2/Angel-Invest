@@ -31,6 +31,7 @@ export class PostService {
       const post = await this.postRepository.findOne(id, {
         relations: ['author'],
       });
+
       return post;
     } catch (err) {
       return new HttpException(err.message, err.code);
