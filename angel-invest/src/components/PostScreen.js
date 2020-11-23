@@ -1,17 +1,17 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const DetailsScreen = ({navigation}) => {
+const PostScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
         <Text>Details Screen</Text>
         <Button
             title="Go to details screen...again"
-            onPress={() => navigation.push("Details")}
+            onPress={() => navigation.push("PostScreen")}
         />
         <Button
             title="Go to home"
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => navigation.navigate("HomeScreen")}
         />
         <Button
             title="Go back"
