@@ -21,7 +21,7 @@ const PostScreen = ({navigation}) => {
     );
 };
 
-export default DetailsScreen;
+export default PostScreen;
 
 const styles = StyleSheet.create({
   container: {
