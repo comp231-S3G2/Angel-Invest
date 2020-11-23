@@ -1,35 +1,16 @@
-import React, {useState} from 'react';
-import {Picker, Text, StyleSheet, View, TextInput, Button} from 'react-native';
+import * as React from 'react';
+import { Button, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const App = () => {
-  const [category, setcategory] = useState('Default');
+function HomeScreen({ navigation }) {
   return (
-    <View >
-      <Text > Demo Form </Text>
-      <View>
-
-        <TextInput 
-          placeholder="Title" />
-        <TextInput
-          placeholder="Description"
-        />
-
-        <Picker
-          selectedValue={category}
-          onValueChange={currentcategory => setcategory(currentcategory)}>
-          <Picker.Item label="Information Technology" value="Information Technology" />
-          <Picker.Item label="Healthcare" value="Healthcare" />
-          <Picker.Item label="hospitality" value="hospitality" />
-        </Picker>
-        <Text>
-          Selected: {category}
-        </Text>
-      </View>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('Details')}
+      />
     </View>
   );
-};
-const styles = StyleSheet.create({
-  //Check project repo for styles
-});
-
-export default App;
+}
