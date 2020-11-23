@@ -5,12 +5,14 @@ import {
   CreateDateColumn,
   BeforeInsert,
   TableInheritance,
+  OneToMany,
 } from 'typeorm';
 import { IsEmail } from 'class-validator';
 import { Logger } from '@nestjs/common';
 import { jwtConstants } from '../../../config/auth/jwt.secret';
 import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcryptjs';
+import { PostEntity } from './post.entity';
 
 @Entity('User')
 @TableInheritance({ column: { type: 'varchar', name: 'type' } })
@@ -37,7 +39,7 @@ export class User {
   @Column({ nullable: false })
   password: string;
 
-  @Column()
+  @Column({ type: 'text' })
   accountType: string;
 
   @Column({ nullable: true })
@@ -45,6 +47,9 @@ export class User {
 
   @Column()
   salt: string;
+
+  @OneToMany(type => PostEntity, post => post.author)
+  posts: PostEntity[];
 
   // Encrypts the password with salt for security purposes.
   async validatePassword(password: string): Promise<boolean> {
