@@ -1,11 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import React from 'react'
-import HomeScreen from '../navigations/Home/view';
 import { Icon } from 'react-native-elements';
-import {Text} from 'react-native'
 import FavoriteScreen from '../navigations/Favorite/view';
 import InvestmentsScreen from '../navigations/Investments/view';
 import SearchScreen from '../navigations/Search/view';
+import AppDrawer from '../components/AppDrawer/view';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +13,7 @@ const AppTabs = () => {
         <Tab.Navigator    tabBarOptions={{
             showLabel: false
         }}>
-            <Tab.Screen name="Home" component={HomeScreen} options={{
+            <Tab.Screen name="Home" component={AppDrawer} options={{
                 tabBarIcon:  ({focused, color}: any) => (<Icon
                     name='home'
                     type='fontawesome'
