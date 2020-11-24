@@ -1,19 +1,41 @@
-import React, { useEffect } from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import React from 'react';
+import { createDrawerNavigator, DrawerItemList, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import HomeScreen from '../../navigations/Home/view';
-import { Icon } from 'react-native-elements';
-import {Text} from 'react-native'
+import { Icon, Divider } from 'react-native-elements';
+import {Text, View, Linking} from 'react-native'
+import HomeSettings from '../HomeSettings/view';
+import Styles from './style';
 
 const Drawer = createDrawerNavigator();
 
+const CustomDrawer = (props: any) => {
+    return(
+        <DrawerContentScrollView {...props}>
+           
+            <View style={Styles.HomeSettingsProfileComponent}>
+                <HomeSettings/>
+            </View>
+          <DrawerItemList {...props}/>
+            <Divider style={{ top: 15 }} />
+            <View>
+            <DrawerItem
+        label="Angel Invest Inc."
+        onPress={() => Linking.openURL('https://mywebsite.com/help')}
+      />
+            </View>
+        </DrawerContentScrollView>)
+
+
+}
 const AppDrawer = ({navigation}: any) => {
 
     return (
-          <Drawer.Navigator initialRouteName="Home" drawerStyle={{backgroundColor: '#F7F8FD'}}>
-            <Drawer.Screen name="Home" component={HomeScreen} options={{ 
+          <Drawer.Navigator initialRouteName="Home" drawerStyle={{backgroundColor: '#F7F8FD', width: '80%'}} 
+          drawerContent={(props: any) => <CustomDrawer {...props}/>}>
+            {/* <Drawer.Screen name="Home" component={HomeScreen} options={{ 
                 drawerIcon: () => {return (<Icon type="fontawesome" name="home" color="#9A5FFD" size={30} />)},
                 drawerLabel: () => {return (<Text>Home</Text>)}
-}}/>
+}}/> */}
             <Drawer.Screen name="Notifications" component={HomeScreen} options={{ 
                 drawerIcon: () => {return (<Icon type="material" name="notifications" color="#9A5FFD" size={30} />)},
                 drawerLabel: () => {return (<Text>Notifications</Text>)}
