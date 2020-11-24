@@ -31,7 +31,7 @@ const PostScreen = ({navigation}) => {
   }
     return (
       <View style={styles.container}>
-        
+        <Text >Title</Text>
       <TextInput
       style={styles.textinput}
       placeholder ="Title" underlineColorAndroid={'transparent'}/>
@@ -48,11 +48,11 @@ const PostScreen = ({navigation}) => {
         {label: 'Retailer', value: 'Retailer'},
     ]}
     defaultIndex={1}
-    containerStyle={{height: 40}}
+    containerStyle={{width: 800, height: 70}}
     onChangeItem={item => console.log(item.label, item.value)}
 />
 
-
+<Text  >Description</Text>
 <TextInput
       style={styles.textinput}
       placeholder ="Description" underlineColorAndroid={'transparent'}
@@ -61,13 +61,14 @@ const PostScreen = ({navigation}) => {
       
        />
 
+<Text >Equity Goal</Text>
 <TextInput
       style={styles.textinput}
       placeholder ="Equity Goal" underlineColorAndroid={'transparent'}
       
        />
   
-<TouchableOpacity onPress={() =>openDocumentFile} style={{borderRadius:10, padding:10,width:"80%", alignItems: "center", backgroundColor:"#59cbbd"}}>
+<TouchableOpacity onPress={() =>openDocumentFile} style={{borderRadius:10, padding:10,width:500,height:50, alignItems: "center", backgroundColor:"#59cbbd"}}>
         <Text style = {styles.btntext}>Add Documents</Text>
         </TouchableOpacity>
 
@@ -107,5 +108,6 @@ const styles = StyleSheet.create({
     padding:20,
     backgroundColor: '#59cbbd',
     marginTop: 30,
+    
   }
 });
