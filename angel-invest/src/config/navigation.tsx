@@ -1,15 +1,16 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import  {Test}  from '../components/test'
 import HomeIcon from '@material-ui/icons/Home';
+import HomeScreen from '../navigations/Home/View';
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => {
+const AppTabs = () => {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Home" component={Test} options={{
+            <Tab.Screen name="Home" component={HomeScreen} options={{
           tabBarIcon: () => (<HomeIcon/> )
+
           
   }} />
             {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
@@ -17,4 +18,4 @@ const Tabs = () => {
     );
 }
 
-export default Tabs;
+export {AppTabs};
