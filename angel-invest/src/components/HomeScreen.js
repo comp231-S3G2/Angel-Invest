@@ -10,7 +10,7 @@ const HomeScreen = ({navigation}) => {
 
         <Text >Home Screen</Text>
       <Button
-        title="Go to details screen"
+        title="Go to Create Post screen"
         onPress={() => navigation.navigate("PostScreen")}
       />
       </View>
