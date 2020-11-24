@@ -11,7 +11,7 @@ const PostScreen = ({navigation}) => {
   const openDocumentFile =async() =>{
     try {
       const results = await DocumentPicker.pickMultiple({
-        type: [DocumentPicker.types.images],
+        type: [DocumentPicker.types.allFiles],
       });
       for (const res of results) {
         console.log(
@@ -66,13 +66,12 @@ const PostScreen = ({navigation}) => {
       placeholder ="Equity Goal" underlineColorAndroid={'transparent'}
       
        />
-   //upload documents
-<TouchableOpacity style={styles.Button}>
-        onPress={() =>this.openDocumentFile}
+  
+<TouchableOpacity onPress={() =>openDocumentFile} style={{borderRadius:10, padding:10,width:"80%", alignItems: "center", backgroundColor:"#59cbbd"}}>
         <Text style = {styles.btntext}>Add Documents</Text>
         </TouchableOpacity>
 
-        //Add post Button
+       
        <TouchableOpacity style={styles.Button}>
         <Text style = {styles.btntext}>Add Post</Text>
          </TouchableOpacity>
@@ -90,6 +89,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   textinput:{
+    flexDirection:"row",
+    paddingHorizontal:10,
+    marginHorizontal:55,
+    borderWidth:2,
+    marginTop:100,
     alignSelf: 'stretch',
     height: 40,
     marginBottom: 30,
