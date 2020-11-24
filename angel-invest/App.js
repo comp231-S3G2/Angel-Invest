@@ -20,7 +20,7 @@ const HomeStackScreen = ({navigation}) =>(
         <HomeStack.Screen name="Post" component={HomeScreen} options={{
          headerLeft: () => (
            <Icon.Button 
-            name ="bars" size={25} backgroundColor="009387" onPress={() => navigation.openDrawer()}>
+            name ="menufold" size={25} backgroundColor="009387" onPress={() => navigation.openDrawer()}>
            </Icon.Button>
          )}} />
       </HomeStack.Navigator>
@@ -32,7 +32,7 @@ const PostStackScreen = ({navigation}) =>(
           <PostStack.Screen name="Post" component={PostScreen} options={{
          headerLeft: () => (
            <Icon.Button 
-            name ="bars" size={25} backgroundColor="009387" options={() => {navigation.openDrawer()}}>
+            name ="menufold" size={25} backgroundColor="009387" options={() => {navigation.openDrawer()}}>
            </Icon.Button>
          )}} />
         </PostStack.Navigator>
