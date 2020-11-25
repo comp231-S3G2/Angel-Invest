@@ -1,4 +1,10 @@
-import { Entity, Column, BaseEntity, ChildEntity, TableInheritance } from 'typeorm';
+import {
+  Entity,
+  Column,
+  BaseEntity,
+  ChildEntity,
+  TableInheritance,
+} from 'typeorm';
 import { User } from './user.entity';
 
 @Entity('business')
@@ -7,12 +13,12 @@ export class BusinessEntity extends User {
   @Column({ type: 'text' })
   businessName: string;
 
-  @Column({type: 'text'})
+  @Column({ type: 'text' })
   businessDescription: string;
 
-  @Column({type: 'text'})
+  @Column({ type: 'text' })
   businessTypes: string;
-  
+
   @Column({ type: 'simple-array' })
   bookmarkedPosts: string[];
 
