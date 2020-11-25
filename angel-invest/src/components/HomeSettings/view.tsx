@@ -11,14 +11,13 @@ const HomeSettings = (props: any) => {
     // {/* Component's Parent */}
       
         <View style={Styles.topSettingsComponent}>
-
-          <Text style={Styles.settingsText}>SETTINGS</Text>
-    
     
           <LinearGradient
         colors={['#60E381', '#12AC7C']}
         style={Styles.settingsBackgroundGradient}
       />
+                <Text style={Styles.settingsText}>SETTINGS</Text>
+
     {/* Component Wrapper */}
       <View style={Styles.settingComponentWrapper}>
     
@@ -39,8 +38,10 @@ const HomeSettings = (props: any) => {
             containerStyle={{top: '10%', left: '20%'}}
             name='edit'
             type='font-awesome'
+            onPress={() => alert('not yet implemented.')}
             size={'15%'}
             color='#FFF'
+
 />
 
       </View>    

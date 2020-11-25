@@ -28,14 +28,11 @@ const CustomDrawer = (props: any) => {
 
 }
 const AppDrawer = ({navigation}: any) => {
-
+ 
     return (
           <Drawer.Navigator initialRouteName="Home" drawerStyle={{backgroundColor: '#F7F8FD', width: '80%'}} 
           drawerContent={(props: any) => <CustomDrawer {...props}/>}>
-            {/* <Drawer.Screen name="Home" component={HomeScreen} options={{ 
-                drawerIcon: () => {return (<Icon type="fontawesome" name="home" color="#9A5FFD" size={30} />)},
-                drawerLabel: () => {return (<Text>Home</Text>)}
-}}/> */}
+ 
             <Drawer.Screen name="Notifications" component={HomeScreen} options={{ 
                 drawerIcon: () => {return (<Icon type="material" name="notifications" color="#9A5FFD" size={30} />)},
                 drawerLabel: () => {return (<Text>Notifications</Text>)}

@@ -21,6 +21,9 @@ const App = () => {
             fontDisplay: FontDisplay.FALLBACK},
             "Montserrat-Medium": {uri: require('./assets/fonts/Montserrat-Medium.ttf'),
             fontDisplay: FontDisplay.FALLBACK},
+            "Logo-Font": {uri: require('./assets/fonts/Noteworthy-Bold.ttf'),
+            fontDisplay: FontDisplay.FALLBACK}
+          
           });
           setAssetsLoaded(true)
     })();
