@@ -26,6 +26,9 @@ jobs:
     steps:
       - name: Setup repo
         uses: actions/checkout@v2
+        
+      - name: Allow insecure actions
+        run:  SET ACTIONS_ALLOW_UNSECURE_COMMANDS true
 
       - name: Setup Deno
         uses: denolib/setup-deno@c7d7968ad4a59c159a777f79adddad6872ee8d96
