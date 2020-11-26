@@ -27,5 +27,13 @@ export default StyleSheet.create({
       backgroundColor: '#59cbbd',
       marginTop: 30,
       
-    }
+    },
+    appButtonText: {
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "bold",
+        alignSelf: "center",
+        textTransform: "uppercase"
+      }
+
   });

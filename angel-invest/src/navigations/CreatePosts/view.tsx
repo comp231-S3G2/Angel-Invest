@@ -30,7 +30,7 @@ const PostScreen = () => {
         {label: 'Manufacturer', value: 'Manufacturer'},
         {label: 'Retailer', value: 'Retailer'},
     ]}
-    defaultIndex={1}
+    //defaultIndex={1}
     containerStyle={{width: 800, height: 70}}
     onChangeItem={(item:any) => console.log(item.label, item.value)}
 />
