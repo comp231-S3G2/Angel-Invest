@@ -34,7 +34,7 @@ const AppDrawer = ({navigation}: any) => {
           <Drawer.Navigator initialRouteName="Home" drawerStyle={{backgroundColor: '#F7F8FD', width: '80%'}} 
           drawerContent={(props: any) => <CustomDrawer {...props}/>}>
  
-            <Drawer.Screen name="Post" component={HomeScreen} options={{ 
+            <Drawer.Screen name="Post" component={PostScreen} options={{ 
                 drawerIcon: () => {return (<Icon type="material" name="Post" color="#9A5FFD" size={30} />)},
                 drawerLabel: () => {return (<Text>Post</Text>)}
 }} />
