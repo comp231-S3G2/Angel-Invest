@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
+import Style from './style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import DropDownPicker from 'react-native-dropdown-picker';
 import * as ImagePicker from 'expo-image-picker';
@@ -8,14 +9,14 @@ import Constants from 'expo-constants';
 
 
 
-const PostScreen = ({navigation}) => {
+const PostScreen = () => {
 
 
     return (
-      <View style={styles.container}>
+      <View style={Style.container}>
         <Text >Title</Text>
       <TextInput
-      style={styles.textinput}
+      style={Style.textinput}
       placeholder ="Title" underlineColorAndroid={'transparent'}/>
 
 
@@ -31,12 +32,12 @@ const PostScreen = ({navigation}) => {
     ]}
     defaultIndex={1}
     containerStyle={{width: 800, height: 70}}
-    onChangeItem={item => console.log(item.label, item.value)}
+    onChangeItem={(item:any) => console.log(item.label, item.value)}
 />
 
 <Text  >Description</Text>
 <TextInput
-      style={styles.textinput}
+      style={Style.textinput}
       placeholder ="Description" underlineColorAndroid={'transparent'}
       editable
       maxLength={40}
@@ -45,14 +46,14 @@ const PostScreen = ({navigation}) => {
 
 <Text >Equity Goal</Text>
 <TextInput
-      style={styles.textinput}
+      style={Style.textinput}
       placeholder ="Equity Goal" underlineColorAndroid={'transparent'}
       
        />
   
        
-       <TouchableOpacity style={styles.Button}>
-        <Text style = {styles.btntext}>Add Post</Text>
+       <TouchableOpacity style={Style.Button}>
+        <Text style = {Style.appButtonText}>Add Post</Text>
          </TouchableOpacity>
 
       </View>
@@ -60,32 +61,3 @@ const PostScreen = ({navigation}) => {
 };
 
 export default PostScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center'
-  },
-  textinput:{
-    flexDirection:"row",
-    paddingHorizontal:10,
-    marginHorizontal:55,
-    borderWidth:2,
-    marginTop:100,
-    alignSelf: 'stretch',
-    height: 40,
-    marginBottom: 30,
-    color:'#000000',
-    borderBottomColor:'#A9A9A9',
-    borderBottomWidth: 1,
-  },
-  Button: {
-    alignSelf: 'stretch',
-    alignItems: 'center',
-    padding:20,
-    backgroundColor: '#59cbbd',
-    marginTop: 30,
-    
-  }
-});
