@@ -1,6 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator, DrawerItemList, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import HomeScreen from '../../navigations/Home/view';
+import PostScreen from '../../navigations/Post/view';
 import { Icon, Divider } from 'react-native-elements';
 import {Text, View, Linking} from 'react-native'
 import HomeSettings from '../HomeSettings/view';

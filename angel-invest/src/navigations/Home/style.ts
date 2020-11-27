@@ -8,8 +8,5 @@ export default StyleSheet.create({
     },
     homeTopNavigationWrapper: {
         height: '35%',
-        //  display: 'flex',
-        // flexDirection: 'row',
-        // justifyContent: 'space-around'
     }
 })
