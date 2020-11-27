@@ -5,6 +5,7 @@ import FavoriteScreen from '../navigations/Favorite/view';
 import InvestmentsScreen from '../navigations/Investments/view';
 import SearchScreen from '../navigations/Search/view';
 import AppDrawer from '../components/AppDrawer/view';
+import PostScreen from '../navigations/Post/view';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,6 +29,18 @@ const AppTabs = () => {
                     name='star'
                     type='fontawesome'
                     size= {30}
+                    color={focused ? '#6AE388' : '#7BA285'}
+                  />)
+                 }}
+          
+  />  
+    <Tab.Screen name="post" component={PostScreen} options={{
+                tabBarIcon:  ({focused, color}: any) => (<Icon
+                    containerStyle={{borderWidth: 1, borderColor: '#6AE388'}}
+                    name='add'
+                    raised
+                    type='material'
+                    size= {40}
                     color={focused ? '#6AE388' : '#7BA285'}
                   />)
                  }}

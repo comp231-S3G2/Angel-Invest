@@ -1,7 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator, DrawerItemList, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import HomeScreen from '../../navigations/Home/view';
-import PostScreen from '../../navigations/CreatePosts/view';
+import PostScreen from '../../navigations/Post/view';
 import { Icon, Divider } from 'react-native-elements';
 import {Text, View, Linking} from 'react-native'
 import HomeSettings from '../HomeSettings/view';
@@ -34,10 +34,6 @@ const AppDrawer = ({navigation}: any) => {
           <Drawer.Navigator initialRouteName="Home" drawerStyle={{backgroundColor: '#F7F8FD', width: '80%'}} 
           drawerContent={(props: any) => <CustomDrawer {...props}/>}>
  
-            <Drawer.Screen name="Post" component={PostScreen} options={{ 
-                drawerIcon: () => {return (<Icon type="material" name="Post" color="#9A5FFD" size={30} />)},
-                drawerLabel: () => {return (<Text>Post</Text>)}
-}} />
             <Drawer.Screen name="Notifications" component={HomeScreen} options={{ 
                 drawerIcon: () => {return (<Icon type="material" name="notifications" color="#9A5FFD" size={30} />)},
                 drawerLabel: () => {return (<Text>Notifications</Text>)}
