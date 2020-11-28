@@ -28,7 +28,6 @@ const PostReducer = (state: PostState = initialState, action: { type: string, pa
             }
 
         case SUBMIT_POST_FORM_REQUEST_SUCCESS:
-            alert('Succeded')
             return {
                 ...state,
                 formData: action.payload

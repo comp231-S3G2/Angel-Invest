@@ -31,20 +31,43 @@ const PostView = (props: any) => {
     const [description, setDescription] = useState("");
     const [projectImage, setProjectImage] = useState("");
 
+    const [nameError, setNameError] = useState();
+    const [descriptionError, setDescriptionError] = useState()
 
     const sendForm = () => {
-      const formData = {
-        postData: {
-          name: projectName,
-          moneyGoal: moneyGoal,
-          dateGoal: dateGoal,
-          description: description,
-        },
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3N0c3NAbWFpbC5jb20iLCJpYXQiOjE2MDY1MzIyMjIsImV4cCI6MTYwNzM5NjIyMn0.gQnVCa-dhPjZZJlUBjr4pt5ypKRbruMIxnKm0JGuq2g"
-        
-      }
 
-      props.submitPostForm(formData)
+      if(projectName && description !== "") {
+        const formData = {
+          postData: {
+            name: projectName,
+            moneyGoal: moneyGoal,
+            dateGoal: dateGoal,
+            description: description,
+          },
+          token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3N0c3NAbWFpbC5jb20iLCJpYXQiOjE2MDY1MzIyMjIsImV4cCI6MTYwNzM5NjIyMn0.gQnVCa-dhPjZZJlUBjr4pt5ypKRbruMIxnKm0JGuq2g"
+          
+        }
+
+        setNameError("")
+        setDescriptionError("")
+  
+        props.submitPostForm(formData)
+      }
+      else{
+        if(projectName === ""){
+          setNameError("Required Field")
+        }
+        else {
+          setNameError("")
+        }
+        if (description === ""){
+          setDescriptionError("Required Field")
+        }
+        else {
+          setDescriptionError("")
+        }
+      }
+      
     }
   
 
@@ -115,7 +138,6 @@ const PostView = (props: any) => {
 
     if (!result.cancelled) {
       setProjectImage(result.uri);
-      alert(JSON.stringify(result))
     }
   };
   
@@ -143,15 +165,21 @@ const PostView = (props: any) => {
 
 
     <Input
+   autoFocus
    placeholder="Project Name"
+   errorMessage={nameError}
    maxLength={50}
+   rightIcon={nameError ? { type: 'font-awesome', name: 'exclamation', color : 'red' } : {}}
    leftIcon={{ type: 'font-awesome', name: 'edit' }}
    onChangeText={value => setProjectName(value)}
     />
 
 <Input
+   autoFocus
    placeholder="Project Description"
+   errorMessage={descriptionError}
    multiline
+   rightIcon={descriptionError ? { type: 'font-awesome', name: 'exclamation', color : 'red' } : {}}
    leftIcon={{ type: 'font-awesome', name: 'comment' }}
    onChangeText={value => setDescription(value)}
   />
