@@ -1,11 +1,15 @@
 import 'react-native-gesture-handler'
 import * as Font from "expo-font";
 import React, { useEffect, useState } from 'react'
-import { View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import {AppTabs} from './src/config/navigation'
-import { FontDisplay, loadAsync, useFonts } from 'expo-font';
+import { FontDisplay, loadAsync } from 'expo-font';
 import { AppLoading } from 'expo';
+import { Provider } from 'react-redux'
+import { store, sagaMiddleware } from './src/redux/store'
+import rootSaga from './src/redux/sagas'
+
+sagaMiddleware.run(rootSaga)
 
 const App = () => {
 
@@ -31,11 +35,11 @@ const App = () => {
   }, []);
   if(assetsLoaded) {
     return (
-      <View style={{flex: 1}}>
+      <Provider store={store}>
       <NavigationContainer>
         <AppTabs />
       </NavigationContainer>
-    </View>
+      </Provider>
      )
   }
   return <AppLoading/>

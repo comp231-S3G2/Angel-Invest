@@ -9,7 +9,7 @@ import {
 export class CreatePostDTO {
   @IsNotEmpty()
   @IsString()
-  readonly name?: number;
+  readonly name: string;
 
   @IsOptional()
   @IsNumber()

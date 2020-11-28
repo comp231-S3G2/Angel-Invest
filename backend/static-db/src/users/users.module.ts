@@ -27,11 +27,11 @@ const jwtConstants = config.get('jwt_secret');
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '1d' },
+      signOptions: { expiresIn: '10d' },
     }),
   ],
   controllers: [InvestorController, UserController, PostController],
   providers: [JwtStrategy, InvestorService, UserService, PostService],
   exports: [JwtStrategy, PassportModule],
 })
-export class UserModule {}
+export class UserModule { }

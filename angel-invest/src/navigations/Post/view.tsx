@@ -5,14 +5,48 @@ import { Icon, Input, Image, Button } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import * as ImagePicker from 'expo-image-picker';
+import {connect} from 'react-redux'
+import { Dispatch } from 'redux';
+import { SUBMIT_POST_FORM_REQUEST } from '../../redux/actions/createPost/postActions';
 
-const PostScreen = () => {
-    const [name, setName] = useState("");
+const mapStateToProps = (state: any, props: any) => {
+  const {name} = state.post
+  return name
+}
+
+const mapDispatchToProps = (dispatch: Dispatch, props: any) => ({
+  submitPostForm: (formData: any) => {
+    dispatch({
+      type: SUBMIT_POST_FORM_REQUEST,
+      payload: formData
+    })
+  }
+});
+
+const PostView = (props: any) => {
+    const [projectName, setProjectName] = useState("");
     const [moneyGoal, setMoneyGoal] = useState(0);
     const [show, setShow] = useState(false);
     const [dateGoal, setDateGoal] = useState(new Date(1598051730000));
     const [description, setDescription] = useState("");
     const [projectImage, setProjectImage] = useState("");
+
+
+    const sendForm = () => {
+      const formData = {
+        postData: {
+          name: projectName,
+          moneyGoal: moneyGoal,
+          dateGoal: dateGoal,
+          description: description,
+        },
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3N0c3NAbWFpbC5jb20iLCJpYXQiOjE2MDY1MzIyMjIsImV4cCI6MTYwNzM5NjIyMn0.gQnVCa-dhPjZZJlUBjr4pt5ypKRbruMIxnKm0JGuq2g"
+        
+      }
+
+      props.submitPostForm(formData)
+    }
+  
 
     const onDateGoalChange = (event: any, selectedDate: Date |
        undefined) => {
@@ -102,7 +136,7 @@ const PostScreen = () => {
         colors={['#60E381', '#12AC7C']}
       />
         <Text style={Style.postDetailsText}>Post details</Text>
-        <Icon name="send" color="#F6F6F6"/>
+        <Icon name="send" color="#F6F6F6" onPress={sendForm}/>
         </View>
 
         <View style={Style.formContainer}>
@@ -112,7 +146,7 @@ const PostScreen = () => {
    placeholder="Project Name"
    maxLength={50}
    leftIcon={{ type: 'font-awesome', name: 'edit' }}
-   onChangeText={value => setName(value)}
+   onChangeText={value => setProjectName(value)}
     />
 
 <Input
@@ -161,5 +195,7 @@ const PostScreen = () => {
       </TouchableWithoutFeedback>
     );
 };
+
+const PostScreen = connect(mapStateToProps, mapDispatchToProps)(PostView)
 
 export default PostScreen;
