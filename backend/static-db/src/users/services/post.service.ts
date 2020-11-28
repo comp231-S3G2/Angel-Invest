@@ -33,10 +33,10 @@ export class PostService {
       });
 
       const nonAuthorPost = {...post, investors: null}
-      if(post.author.email === user.email){
+      if (post.author.email === user.email) {
         return post
       }
-      else{ nonAuthorPost; }
+      else { nonAuthorPost; }
 
     } catch (err) {
       return new HttpException(err.message, err.code);
