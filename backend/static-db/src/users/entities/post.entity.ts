@@ -6,7 +6,7 @@ export class PostEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ unique: true })
+  @Column()
   name: string;
 
   @Column({ nullable: true, default: 0 })
