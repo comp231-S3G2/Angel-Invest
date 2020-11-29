@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native';
+import { View, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native';
 import Style from './style';
 import { Icon, Input, Image, Button } from 'react-native-elements';
-import { LinearGradient } from 'expo-linear-gradient';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import * as ImagePicker from 'expo-image-picker';
 import {connect} from 'react-redux'
 import { Dispatch } from 'redux';
 import { SUBMIT_POST_FORM_REQUEST } from '../../redux/actions/createPost/postActions';
+import { CommonActions } from '@react-navigation/native';
+import GradientHeader from '../../components/GradientHeader/view';
+
 
 const mapStateToProps = (state: any, props: any) => {
   const {name} = state.post
@@ -34,24 +36,37 @@ const PostView = (props: any) => {
     const [nameError, setNameError] = useState();
     const [descriptionError, setDescriptionError] = useState()
 
-    const sendForm = () => {
+
+
+    const cleanFormData = () => {
+      setProjectName("")
+      setMoneyGoal(0)
+      setDescription("")
+    }
+
+    const navigateReview = () => {
 
       if(projectName && description !== "") {
         const formData = {
           postData: {
             name: projectName,
-            moneyGoal: moneyGoal,
-            dateGoal: dateGoal,
-            description: description,
+            moneyGoal,
+            dateGoal,
+            description,
+            projectImage
           },
           token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3N0c3NAbWFpbC5jb20iLCJpYXQiOjE2MDY1MzIyMjIsImV4cCI6MTYwNzM5NjIyMn0.gQnVCa-dhPjZZJlUBjr4pt5ypKRbruMIxnKm0JGuq2g"
-          
         }
 
         setNameError("")
         setDescriptionError("")
   
-        props.submitPostForm(formData)
+          props.navigation.dispatch(
+          CommonActions.navigate({
+            name: 'PostDetails',
+            params: formData
+          })
+        );
       }
       else{
         if(projectName === ""){
@@ -83,6 +98,7 @@ const PostView = (props: any) => {
     };
 
     useEffect(() => {
+
       (async () => {
         if (Platform.OS !== 'web') {
           const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -148,19 +164,9 @@ const PostView = (props: any) => {
          setShow(false)
         }}>
       <View style={Style.container}>
-        <View style={{width: '100%', height: '20%', 
-       display: 'flex', 
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-around'}}>
-            <LinearGradient
-            style={Style.linearGradientBackground}
-        colors={['#60E381', '#12AC7C']}
-      />
-        <Text style={Style.postDetailsText}>Post details</Text>
-        <Icon name="send" color="#F6F6F6" onPress={sendForm}/>
-        </View>
-
+       <GradientHeader   
+       text="Post details"
+        icon={<Icon name="chevron-right" color="#F6F6F6" type="font-awesome" onPress={() => navigateReview()}/> }/>
         <View style={Style.formContainer}>
 
 

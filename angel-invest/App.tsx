@@ -2,7 +2,7 @@ import 'react-native-gesture-handler'
 import * as Font from "expo-font";
 import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import {AppTabs} from './src/config/navigation'
+import {AppBottomTabs, AppStackNavigation} from './src/config/navigation'
 import { FontDisplay, loadAsync } from 'expo-font';
 import { AppLoading } from 'expo';
 import { Provider } from 'react-redux'
@@ -37,7 +37,7 @@ const App = () => {
     return (
       <Provider store={store}>
       <NavigationContainer>
-        <AppTabs />
+        <AppStackNavigation />
       </NavigationContainer>
       </Provider>
      )

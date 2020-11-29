@@ -17,6 +17,7 @@ function* submitPostForm(action: any) {
                 payload: response.data.detail
             })
         } else {
+            Alert("Sucess", "Your post has been published successfully.")
             yield put({
                 type: SUBMIT_POST_FORM_REQUEST_SUCCESS,
                 payload: response.data

@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react'
 import { Icon } from 'react-native-elements';
 import FavoriteScreen from '../navigations/Favorite/view';
@@ -6,12 +7,32 @@ import InvestmentsScreen from '../navigations/Investments/view';
 import SearchScreen from '../navigations/Search/view';
 import AppDrawer from '../components/AppDrawer/view';
 import PostScreen from '../navigations/Post/view';
+import PostDetails from '../navigations/PostDetails/view';
+
+const Stack = createStackNavigator();
+
+
+const AppStackNavigation = () => {
+  return (
+    <Stack.Navigator initialRouteName="Home" screenOptions={{
+      headerShown: false
+    }}>
+      <Stack.Screen name="Home" component={AppBottomTabs}/>
+
+      {/* <Stack.Screen name="Post" component={PostScreen}
+ /> */}
+      <Stack.Screen name="PostDetails" component={PostDetails} />
+    </Stack.Navigator>
+  );
+}
 
 const Tab = createBottomTabNavigator();
 
-const AppTabs = () => {
+const AppBottomTabs = () => {
     return (
-        <Tab.Navigator    tabBarOptions={{
+        <Tab.Navigator
+        initialRouteName="Home"
+        tabBarOptions={{
             showLabel: false
         }}>
             <Tab.Screen name="Home" component={AppDrawer} options={{
@@ -72,4 +93,4 @@ const AppTabs = () => {
     );
 }
 
-export {AppTabs};
+export {AppBottomTabs, AppStackNavigation};

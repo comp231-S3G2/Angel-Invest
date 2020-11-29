@@ -6,10 +6,10 @@ import { API } from "../api";
  */
 
 const createPost = (formData: any) => {
-    const { token, postData } = formData;
-    console.log(`${JSON.stringify(postData)} and token: ${JSON.stringify(token)} ===> Form Data sent to create`);
+    const { token } = formData;
+    console.log(`${JSON.stringify(formData)} and token: ${JSON.stringify(token)} ===> Form Data sent to create`);
     API.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    return API.post("post/create", postData)
+    return API.post("post/create", formData)
 }
 
 export { createPost }
