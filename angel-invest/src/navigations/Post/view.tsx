@@ -181,7 +181,6 @@ const PostView = (props: any) => {
     />
 
 <Input
-   autoFocus
    placeholder="Project Description"
    errorMessage={descriptionError}
    multiline
@@ -195,7 +194,7 @@ const PostView = (props: any) => {
    placeholder="Monetary Goal"
    keyboardType="numeric"
    leftIcon={{ type: 'material', name: 'attach-money' }}
-   onChangeText={value => setMoneyGoal(parseInt(value))}
+   onChangeText={value => setMoneyGoal(Math.abs(parseInt(value)))}
   />
   
        <SelectedImage/>
@@ -216,6 +215,7 @@ const PostView = (props: any) => {
 {show &&(
   <DateTimePicker
         style={{width: '70%', height: '20%', alignSelf: 'center'}}
+          minimumDate={new Date(Date.now())}
           testID="dateTimePicker"
           value={dateGoal}
           mode="datetime"
