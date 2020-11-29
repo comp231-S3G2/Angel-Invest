@@ -32,10 +32,13 @@ export class PostService {
       const post = await this.postRepository.findOne(id, {
         relations: ['author'],
       });
-      if (!post) {
-        return new HttpException(`Post with ID: ${id} does not exist.`, 204);
+
+      const nonAuthorPost = {...post, investors: null}
+      if (post.author.email === user.email) {
+        return post
       }
-      return post;
+      else { nonAuthorPost; }
+
     } catch (err) {
       return new HttpException(err.message, err.code);
     }

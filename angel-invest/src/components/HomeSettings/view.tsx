@@ -39,7 +39,7 @@ const HomeSettings = (props: any) => {
             name='edit'
             type='font-awesome'
             onPress={() => alert('not yet implemented.')}
-            size={'15%'}
+            size={20}
             color='#FFF'
 
 />
