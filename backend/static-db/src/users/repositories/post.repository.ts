@@ -15,8 +15,9 @@ export class PostRepository extends Repository<PostEntity> {
   createPost = async (postDTO: CreatePostDTO, author: User): Promise<any> => {
     try {
       const post = new PostEntity();
-      const { description, moneyGoal, dateGoal } = postDTO;
+      const { description, moneyGoal, dateGoal, name } = postDTO;
       post.author = author;
+      post.name = name;
       post.description = description;
       post.moneyGoal = moneyGoal ? moneyGoal : 0;
       post.dateGoal = dateGoal ? new Date(dateGoal) : new Date();

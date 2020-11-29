@@ -1,10 +1,7 @@
-import { FlatList, Text, TouchableOpacity, View } from "react-native"
+import { FlatList, Text, TouchableOpacity, View, ActivityIndicator } from "react-native"
 import React from 'react'
 import { Icon, Image } from "react-native-elements"
-
-
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
-import { CenterFocusStrong } from "@material-ui/icons"
 
 
 const DUMMY = [
@@ -97,7 +94,8 @@ const HorizontalList = (props: any) => {
     (
         <TouchableOpacity onPress={() => alert(JSON.stringify(item))}>
                 <View style={{width: wp('50%'), height: hp('100%'), paddingLeft: wp('5%')}}>
-                        <Image 
+                        <Image
+                          PlaceholderContent={<ActivityIndicator />}
                         source={{uri: item.picture.uri}}
                          style={{width:200, height:250}} 
                          containerStyle={{borderWidth: 1, borderRadius: 50/2, borderColor: '#EEE'}}

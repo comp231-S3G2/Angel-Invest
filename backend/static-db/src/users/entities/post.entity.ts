@@ -7,6 +7,9 @@ export class PostEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column()
+  name: string;
+
   @Column({ nullable: true, default: 0 })
   moneyGoal?: number;
 

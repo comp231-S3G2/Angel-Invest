@@ -1,18 +1,90 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native';
+import { View, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native';
 import Style from './style';
 import { Icon, Input, Image, Button } from 'react-native-elements';
-import { LinearGradient } from 'expo-linear-gradient';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import * as ImagePicker from 'expo-image-picker';
+import {connect} from 'react-redux'
+import { Dispatch } from 'redux';
+import { SUBMIT_POST_FORM_REQUEST } from '../../redux/actions/createPost/postActions';
+import { CommonActions } from '@react-navigation/native';
+import GradientHeader from '../../components/GradientHeader/view';
 
-const PostScreen = () => {
-    const [name, setName] = useState("");
+
+const mapStateToProps = (state: any, props: any) => {
+  const {name} = state.post
+  return name
+}
+
+const mapDispatchToProps = (dispatch: Dispatch, props: any) => ({
+  submitPostForm: (formData: any) => {
+    dispatch({
+      type: SUBMIT_POST_FORM_REQUEST,
+      payload: formData
+    })
+  }
+});
+
+const PostView = (props: any) => {
+    const [projectName, setProjectName] = useState("");
     const [moneyGoal, setMoneyGoal] = useState(0);
     const [show, setShow] = useState(false);
     const [dateGoal, setDateGoal] = useState(new Date(1598051730000));
     const [description, setDescription] = useState("");
     const [projectImage, setProjectImage] = useState("");
+
+    const [nameError, setNameError] = useState();
+    const [descriptionError, setDescriptionError] = useState()
+
+
+
+    const cleanFormData = () => {
+      setProjectName("")
+      setMoneyGoal(0)
+      setDescription("")
+    }
+
+    const navigateReview = () => {
+
+      if(projectName && description !== "") {
+        const formData = {
+          postData: {
+            name: projectName,
+            moneyGoal,
+            dateGoal,
+            description,
+            projectImage
+          },
+          token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3N0c3NAbWFpbC5jb20iLCJpYXQiOjE2MDY1MzIyMjIsImV4cCI6MTYwNzM5NjIyMn0.gQnVCa-dhPjZZJlUBjr4pt5ypKRbruMIxnKm0JGuq2g"
+        }
+
+        setNameError("")
+        setDescriptionError("")
+  
+          props.navigation.dispatch(
+          CommonActions.navigate({
+            name: 'PostDetails',
+            params: formData
+          })
+        );
+      }
+      else{
+        if(projectName === ""){
+          setNameError("Required Field")
+        }
+        else {
+          setNameError("")
+        }
+        if (description === ""){
+          setDescriptionError("Required Field")
+        }
+        else {
+          setDescriptionError("")
+        }
+      }
+      
+    }
+  
 
     const onDateGoalChange = (event: any, selectedDate: Date |
        undefined) => {
@@ -26,6 +98,7 @@ const PostScreen = () => {
     };
 
     useEffect(() => {
+
       (async () => {
         if (Platform.OS !== 'web') {
           const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -81,7 +154,6 @@ const PostScreen = () => {
 
     if (!result.cancelled) {
       setProjectImage(result.uri);
-      alert(JSON.stringify(result))
     }
   };
   
@@ -92,32 +164,28 @@ const PostScreen = () => {
          setShow(false)
         }}>
       <View style={Style.container}>
-        <View style={{width: '100%', height: '20%', 
-       display: 'flex', 
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-around'}}>
-            <LinearGradient
-            style={Style.linearGradientBackground}
-        colors={['#60E381', '#12AC7C']}
-      />
-        <Text style={Style.postDetailsText}>Post details</Text>
-        <Icon name="send" color="#F6F6F6"/>
-        </View>
-
+       <GradientHeader   
+       text="Post details"
+        icon={<Icon name="chevron-right" color="#F6F6F6" type="font-awesome" onPress={() => navigateReview()}/> }/>
         <View style={Style.formContainer}>
 
 
     <Input
+   autoFocus
    placeholder="Project Name"
+   errorMessage={nameError}
    maxLength={50}
+   rightIcon={nameError ? { type: 'font-awesome', name: 'exclamation', color : 'red' } : {}}
    leftIcon={{ type: 'font-awesome', name: 'edit' }}
-   onChangeText={value => setName(value)}
+   onChangeText={value => setProjectName(value)}
     />
 
 <Input
+   autoFocus
    placeholder="Project Description"
+   errorMessage={descriptionError}
    multiline
+   rightIcon={descriptionError ? { type: 'font-awesome', name: 'exclamation', color : 'red' } : {}}
    leftIcon={{ type: 'font-awesome', name: 'comment' }}
    onChangeText={value => setDescription(value)}
   />
@@ -161,5 +229,7 @@ const PostScreen = () => {
       </TouchableWithoutFeedback>
     );
 };
+
+const PostScreen = connect(mapStateToProps, mapDispatchToProps)(PostView)
 
 export default PostScreen;

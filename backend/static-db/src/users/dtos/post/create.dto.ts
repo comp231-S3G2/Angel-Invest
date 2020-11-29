@@ -1,6 +1,16 @@
-import { IsNotEmpty, IsString, IsNumber, IsDateString, IsOptional } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsString,
+  IsNumber,
+  IsDateString,
+  IsOptional,
+} from 'class-validator';
 
 export class CreatePostDTO {
+  @IsNotEmpty()
+  @IsString()
+  readonly name: string;
+
   @IsOptional()
   @IsNumber()
   readonly moneyGoal?: number;
