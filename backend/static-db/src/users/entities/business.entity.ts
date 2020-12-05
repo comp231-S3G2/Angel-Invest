@@ -16,6 +16,9 @@ export class BusinessEntity extends User {
   @Column({ type: 'text' })
   businessDescription: string;
 
+  @Column({ nullable: true, default: 0 })
+  equityLeft: number;
+
   @Column({ type: 'text' })
   businessTypes: string;
 

@@ -13,6 +13,9 @@ export class PostEntity {
   @Column({ nullable: true, default: 0 })
   moneyGoal?: number;
 
+  @Column({ nullable: true, default: 0 })
+  amountMoneyEqualsEquity?: number;
+
   @Column({ nullable: false, type: 'text' })
   description: string;
 
