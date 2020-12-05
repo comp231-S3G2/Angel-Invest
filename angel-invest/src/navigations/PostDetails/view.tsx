@@ -48,8 +48,7 @@ const PostDetails = (props: any) => {
                 <Text style={Style.formValues}>{formData.description}</Text>
                 </View>
 
-               
-
+  
                 {formData.moneyGoal && ( <View style={Style.viewContainer}>
                 <Text style={Style.formTextHeader}>Project Monetary Goal</Text>
                 <Text style={Style.formValues}>$ {formData.moneyGoal}</Text>
@@ -71,7 +70,7 @@ const PostDetails = (props: any) => {
                 </View>) : null}
                
                <Button 
-               containerStyle={{width: '40%', position: 'absolute', bottom: '2%'}}
+               containerStyle={Style.editButton}
                titleStyle={{color: '#12AC7C'}}
                type="clear"
                title="Edit information" 

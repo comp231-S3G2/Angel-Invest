@@ -2,7 +2,7 @@ import React from "react"
 import { Text, View } from "react-native";
 import Style from './style';
 import HomeTopNavigation from "../../components/HomeTopNavigation/view";
-import HorizontalList, { CategoryList } from "../../components/horizontalPopularList/view";
+import HorizontalList, { CategoryList } from "../../components/HorizontalPopularList/view";
 
 const HomeScreen = ({navigation}: any) => {
     
