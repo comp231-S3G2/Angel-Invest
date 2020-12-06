@@ -28,6 +28,3 @@ Run `CREATE DATABASE angelinvest OWNER angelinvestapp;`. Connect to the database
 
 ### Run the Project
 Run the project using `npm run start` to start the backend server.
-
-## TODO: Testing
-Run the test suite using `npm run test` to run Jest.
