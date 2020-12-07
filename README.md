@@ -29,6 +29,6 @@ Run `CREATE DATABASE angelinvest OWNER angelinvestapp;`. Connect to the database
 ### Run the Project
 Run the project using `npm run start` to start the backend server.
 
-### Run the Unit Test
+### Run the Unit Tests
 Run all the backend unit tests using `npm run test:e2e`.
 
