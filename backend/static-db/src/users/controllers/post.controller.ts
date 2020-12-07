@@ -16,7 +16,7 @@ export class PostController {
    * @CREATE_POST
    */
   @Post('/create')
-  async createAccount(@GetUser() user: User, @Body() postData: CreatePostDTO) {
+  async createPost(@GetUser() user: User, @Body() postData: CreatePostDTO) {
     this.logger.log(`Incoming Post Request [Create] - ${JSON.stringify(postData)}`);
     return this.postService.createPost(postData, user);
   }
