@@ -27,7 +27,7 @@ Then create the angelinvestapp role by running `CREATE ROLE angelinvestapp WITH 
 Run `CREATE DATABASE angelinvest OWNER angelinvestapp;`. Connect to the database using `\c angelinvest` and add the UUID-OSSP using `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`
 
 ### Run the Unit Test
-Run all the unit tests using `npm run test:e2e`.
+Run all the backend unit tests using `npm run test:e2e`.
 
 ### Run the Project
 Run the project using `npm run start` to start the backend server.
