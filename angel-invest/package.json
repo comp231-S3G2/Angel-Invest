@@ -22,7 +22,7 @@
     "@types/react-redux": "^7.1.11",
     "@types/redux-saga": "^0.10.5",
     "@use-expo/font": "^2.0.0",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "expo": "~39.0.2",
     "expo-font": "~8.3.0",
     "expo-image-picker": "9.1.1",
